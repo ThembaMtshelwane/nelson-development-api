@@ -1,6 +1,5 @@
 import { ZodError } from "zod";
 import { Request, Response } from "express";
-import { NextFunction } from "connect";
 import { NODE_ENV } from "../constants/env.const";
 
 const handleZodError = (err: ZodError) => {

@@ -17,23 +17,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Welocme to the api");
 });
 
-app.post(
-  "/",
-  validateDataInput,
-  expressAsyncHandler((req: Request, res: Response) => {
-    const data: Data = req.body;
-    const orderedLetters = wordToSortedLetters(data.data);
-    if (orderedLetters.length) {
-      res.status(200).json({
-        word: orderedLetters,
-      });
-    } else {
-      res.status(500).json({
-        message: "Error: No ordered letters",
-      });
-    }
-  })
-);
+app.post("/", validateDataInput);
 
 app.use(errorHandler as unknown as express.ErrorRequestHandler);
 
