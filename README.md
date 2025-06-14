@@ -66,7 +66,6 @@ To get a local copy up and running, follow these simple steps.
 
 **Description**: Processes a word by sorting its letters alphabetically.
 
----
 
 ### Request Body
 
