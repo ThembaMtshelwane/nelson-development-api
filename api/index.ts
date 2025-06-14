@@ -6,6 +6,7 @@ import { Data } from "../src/types";
 import { wordToSortedLetters } from "../src/services/word.process.service";
 import { validateDataInput } from "../src/middleware/data.validator";
 import expressAsyncHandler from "express-async-handler";
+import { errorHandler } from "../src/middleware/error.handling";
 
 const app = express();
 
@@ -33,6 +34,8 @@ app.post(
     }
   })
 );
+
+app.use(errorHandler as unknown as express.ErrorRequestHandler);
 
 app.listen(PORT, () => {
   console.log(`Server running: http://localhost:${PORT}`);
