@@ -1,11 +1,8 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-
 import { PORT } from "../src/constants/env.const";
-
 import { validateDataInput } from "../src/middleware/data.validator";
 import { wordProcess } from "../src/controller/wordProcess.controller";
-
 import { errorHandler } from "../src/middleware/error.handling";
 
 const app = express();

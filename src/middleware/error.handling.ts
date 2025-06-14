@@ -31,6 +31,7 @@ const errorHandler = (
     return;
   }
 
+  // Catch all for other errors if not specified
   res.status(500).json({
     success: false,
     message: "Server error",

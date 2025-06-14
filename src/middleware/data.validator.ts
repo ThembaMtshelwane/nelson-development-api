@@ -1,7 +1,6 @@
 import expressAsyncHandler from "express-async-handler";
 import { NextFunction, Response, Request } from "express";
 import { dataSchema } from "../schema/word.schema";
-import { Data } from "../types";
 
 export const validateDataInput = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
