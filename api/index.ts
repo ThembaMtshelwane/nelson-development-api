@@ -3,6 +3,7 @@ import cors from "cors";
 
 import { PORT } from "../src/constants/env.const";
 import { Data } from "../src/types";
+import { wordToSortedLetters } from "../src/services/word.process.service";
 
 const app = express();
 
@@ -15,10 +16,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.post("/", (req: Request, res: Response) => {
   const data: Data = req.body;
-  const word: string = data.data;
-  const letterArray: string[] = word.split("");
-  const orderedLetters: string[] = letterArray.sort();
-
+  const orderedLetters = wordToSortedLetters(data.data);
   if (orderedLetters.length) {
     res.status(200).json({
       word: orderedLetters,
