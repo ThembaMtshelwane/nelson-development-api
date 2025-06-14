@@ -8,6 +8,7 @@ const handleZodError = (err: ZodError) => {
     message: issue.message,
   }));
 
+  // Standarzing the ZodError to a more user friendly object
   return {
     statusCode: 400,
     body: {
