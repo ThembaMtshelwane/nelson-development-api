@@ -3,7 +3,8 @@ import { z } from "zod";
 // Defines the structure/type of the word
 export const wordSchema = z
   .string()
-  .min(1, "Please enter a word, entry cannot be empty");
+  .min(1, "Please enter a word, entry cannot be empty")
+  .regex(/^[^0-9]*$/, "Numbers are not allowed in the word");
 
 // Defines the structure of the input from the client to be
 // in the form {data: "example"}

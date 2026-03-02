@@ -1,5 +1,5 @@
-import app from "../src/app";
-import { ENV_VARS } from "../src/constants/env.const";
+import app from "./app";
+import { ENV_VARS } from "./constants/env.const";
 
 // Only run app.listen locally
 if (process.env.NODE_ENV !== "production") {
