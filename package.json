@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon api/index.ts"
+    "dev": "tsx watch --env-file=.env src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "express": "^5.1.0",
     "express-async-handler": "^1.2.0",
     "mongoose": "^8.15.2",
+    "tsx": "^4.21.0",
     "zod": "^3.25.64"
   },
   "devDependencies": {
@@ -23,6 +24,6 @@
     "@types/node": "^24.0.1",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.9.3"
   }
 }

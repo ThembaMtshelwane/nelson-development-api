@@ -1,6 +1,15 @@
 import { ZodError } from "zod";
 import { NextFunction, Request, Response } from "express";
-import { NODE_ENV } from "../constants/env.const";
+import { ENV_VARS } from "../constants/env.const";
+import { ERROR_MESSAGES, HTTP_CODES } from "../constants/http.const";
+
+export class HttpError extends Error {
+  statusCode: number;
+  constructor(statusCode: number, message: string) {
+    super(message);
+    this.statusCode = statusCode;
+  }
+}
 
 const handleZodError = (err: ZodError) => {
   const errors = err.issues.map((issue) => ({
@@ -10,11 +19,11 @@ const handleZodError = (err: ZodError) => {
 
   // Standarzing the ZodError to a more user friendly object
   return {
-    statusCode: 400,
+    statusCode: HTTP_CODES.BAD_REQUEST,
     body: {
       success: false,
       errors,
-      message: "Validation Error",
+      message: ERROR_MESSAGES.VALIDATION_ERROR,
     },
   };
 };
@@ -23,7 +32,7 @@ const errorHandler = (
   err: any | Error | ZodError,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Response | void => {
   if (err instanceof ZodError) {
     const { statusCode, body } = handleZodError(err);
@@ -32,10 +41,10 @@ const errorHandler = (
   }
 
   // Catch all for other errors if not specified
-  res.status(500).json({
+  res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).json({
     success: false,
-    message: "Server error",
-    stack: NODE_ENV === "development" ? err.stack : null,
+    message: ERROR_MESSAGES.INTERNAL_SERVER_ERROR,
+    stack: ENV_VARS.NODE_ENV === "development" ? err.stack : null,
   });
 
   next();
