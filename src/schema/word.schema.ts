@@ -4,7 +4,7 @@ import { z } from "zod";
 export const wordSchema = z
   .string()
   .min(1, "Please enter a word, entry cannot be empty")
-  .regex(/^[a-zA-Z]+$/, "Numbers are not allowed in the word");
+  .regex(/^[a-zA-Z]+$/, "The word must only contain letters");
 
 // Defines the structure of the input from the client to be
 // in the form {data: "example"}

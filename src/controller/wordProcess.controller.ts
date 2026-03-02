@@ -9,8 +9,7 @@ export const wordProcess = expressAsyncHandler(
   (req: Request, res: Response) => {
     //This is the data sent by the client in the format {data: "example"}
     const data: Data = req.body;
-    console.log("Received data:", data);
-
+    
     if (
       !data ||
       !data.data ||
